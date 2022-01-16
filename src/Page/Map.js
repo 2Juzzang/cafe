@@ -1,6 +1,5 @@
 /* global kakao */
 import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import { Grid } from '../elements/index';
 const Map = () => {
   useEffect(() => {
@@ -8,28 +7,26 @@ const Map = () => {
     let options = {
       //지도를 생성할 때 필요한 기본 옵션
       center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
-      level: 3, //지도의 레벨(확대, 축소 정도)
+      level: 5, //지도의 레벨(확대, 축소 정도)
     };
 
     let map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+    let markerPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+    let marker = new kakao.maps.Marker({
+      position: markerPosition,
+    });
+    marker.setMap(map);
   }, []);
 
   return (
-    <Container>
-      <Grid
-        width='400px'
-        height='400px'
-        margin='7px auto'
-        bg='yellow'
-        id='map'
-      ></Grid>
-    </Container>
+    <Grid
+      width='400px'
+      height='400px'
+      margin='7px auto'
+      bg='yellow'
+      id='map'
+    ></Grid>
   );
 };
-
-const Container = styled.div`
-  /* display: flex; */
-  /* background-color: black; */
-`;
 
 export default Map;
