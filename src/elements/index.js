@@ -1,2 +1,3 @@
 import Grid from './Grid';
-export { Grid };
+import Button from './Button';
+export { Grid, Button };
