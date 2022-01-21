@@ -1,12 +1,14 @@
 /* global kakao */
 import React, { useEffect, useState } from 'react';
 import { markerData } from '../Data/MarkerData';
-import Detail from '../Components/Detail';
+import Detail from './Detail';
 import { Grid } from '../elements/index';
 
 const Map = () => {
   const [name, setName] = useState('위치를 선택해주세요');
   const [table, setTable] = useState('');
+  const [empty, setEmpty] = useState('');
+  const [time, setTime] = useState();
   const mapScript = () => {
     let container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     let options = {
@@ -26,10 +28,10 @@ const Map = () => {
       kakao.maps.event.addListener(marker, 'click', function () {
         setName(markerData[i].title);
         setTable(markerData[i].maximum);
+        setEmpty(markerData[i].empty);
       });
     }
   };
-  console.log(table);
   useEffect(() => {
     mapScript();
   }, []);
@@ -43,7 +45,7 @@ const Map = () => {
         bg='yellow'
         id='map'
       ></Grid>
-      <Detail name={name} table={table} />
+      <Detail name={name} empty={empty} setEmpty={setEmpty} table={table} />
     </>
   );
 };

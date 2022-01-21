@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Map from '../src/Page/Map';
+import Map from './Components/Map';
 import Header from './Components/Header';
 const App = () => {
   return (

@@ -9,8 +9,7 @@ const Header = () => {
           <p>자리 있어요?</p>
         </Grid>
         <Grid display='flex' justifyContent='flex-end'>
-          <p style={{ margin: 'auto 10px' }}>로그인</p>
-          <p>회원가입</p>
+          <p>사장님 로그인</p>
         </Grid>
       </Grid>
     </Container>
