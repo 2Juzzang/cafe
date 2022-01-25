@@ -3,9 +3,8 @@ import { markerData } from '../Data/MarkerData';
 import { Grid, Button } from '../elements';
 const TableInput = ({ name, empty, setEmpty, table }) => {
   const store = markerData.filter((store) => store.title === name)[0];
-  console.log('리렌더링');
   const timeUpdate = () => {
-    store.time = new Date().getTime();
+    return (store.time = new Date().getTime());
   };
   const overInput = () => {
     if (empty > store.maximum) {
