@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { markerData } from '../Data/MarkerData';
 import { Grid, Button } from '../elements';
-const TableInput = ({ name, empty, setEmpty, table, setUpdate }) => {
+const TableInput = ({ name, empty, setEmpty, table }) => {
   const store = markerData.filter((store) => store.title === name)[0];
   console.log('리렌더링');
+  const timeUpdate = () => {
+    store.time = new Date().getTime();
+  };
   const overInput = () => {
     if (empty > store.maximum) {
       alert('총 테이블 갯수를 초과했습니다');
       return setEmpty(store.empty);
     }
+    timeUpdate();
     return (store.empty = empty);
   };
-  useEffect(() => {}, []);
+
   return (
     <Grid
       display='flex'

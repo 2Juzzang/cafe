@@ -8,7 +8,7 @@ const Map = () => {
   const [name, setName] = useState('위치를 선택해주세요');
   const [table, setTable] = useState('');
   const [empty, setEmpty] = useState('');
-  const [time, setTime] = useState();
+  const [time, setTime] = useState('위치를 선택해주세요');
   const mapScript = () => {
     let container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     let options = {
@@ -25,10 +25,12 @@ const Map = () => {
         title: markerData[i].title,
         maximum: markerData[i].maximum,
       });
+
       kakao.maps.event.addListener(marker, 'click', function () {
         setName(markerData[i].title);
         setTable(markerData[i].maximum);
         setEmpty(markerData[i].empty);
+        setTime(markerData[i].time);
       });
     }
   };
@@ -37,7 +39,7 @@ const Map = () => {
   }, []);
 
   return (
-    <>
+    <Grid height='auto'>
       <Grid
         width='400px'
         height='600px'
@@ -45,8 +47,14 @@ const Map = () => {
         bg='yellow'
         id='map'
       ></Grid>
-      <Detail name={name} empty={empty} setEmpty={setEmpty} table={table} />
-    </>
+      <Detail
+        name={name}
+        empty={empty}
+        setEmpty={setEmpty}
+        table={table}
+        time={time}
+      />
+    </Grid>
   );
 };
 
