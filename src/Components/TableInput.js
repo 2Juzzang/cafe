@@ -1,7 +1,7 @@
 import React from 'react';
-import { markerData } from '../Data/MarkerData';
+// import { markerData } from '../Data/MarkerData';
 import { Grid, Button } from '../elements';
-const TableInput = ({ name, empty, setEmpty, table }) => {
+const TableInput = ({ markerData, name, empty, setEmpty, table }) => {
   const store = markerData.filter((store) => store.title === name)[0];
   const timeUpdate = () => {
     return (store.time = new Date().getTime());
