@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Grid } from '../elements';
 const Time = ({ time }) => {
+  console.log(time, 'ㅅㅣ간');
   const updateTime = (time) => {
     if (typeof time == 'string') {
       return '위치를 선택해주세요';
@@ -22,9 +23,13 @@ const Time = ({ time }) => {
     return `${Math.floor(years)}년 전`;
   };
   useEffect(() => {
-    updateTime();
+    updateTime(time);
   }, [time]);
-  return <Grid height='auto'>{updateTime(time)}</Grid>;
+  return (
+    <>
+      <Grid height='auto'>{updateTime(time)}</Grid>
+    </>
+  );
 };
 
 export default Time;

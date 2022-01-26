@@ -1,10 +1,11 @@
 import React from 'react';
-// import { markerData } from '../Data/MarkerData';
 import { Grid, Button } from '../elements';
+import { firestore } from '../firebase';
 const TableInput = ({ markerData, name, empty, setEmpty, table }) => {
+  const bucket = firestore.collection('cafe');
   const store = markerData.filter((store) => store.title === name)[0];
   const timeUpdate = () => {
-    return (store.time = new Date().getTime());
+    bucket.doc(store.title).update({ time: new Date().getTime() });
   };
   const overInput = () => {
     if (empty > store.maximum) {
@@ -12,6 +13,7 @@ const TableInput = ({ markerData, name, empty, setEmpty, table }) => {
       return setEmpty(store.empty);
     }
     timeUpdate();
+    bucket.doc(store.title).update({ empty: empty });
     return (store.empty = empty);
   };
 
