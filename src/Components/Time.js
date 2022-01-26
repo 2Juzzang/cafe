@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { Grid } from '../elements';
 const Time = ({ time }) => {
-  const recentUpdate = time;
-  const updateTime = (recentUpdate) => {
+  const updateTime = (time) => {
     if (typeof time == 'string') {
       return '위치를 선택해주세요';
     }
-    const milliSeconds = new Date() - recentUpdate;
+    const milliSeconds = new Date() - time;
     const seconds = milliSeconds / 1000;
     if (seconds < 60) return `방금 전`;
     const minutes = seconds / 60;
@@ -22,8 +21,10 @@ const Time = ({ time }) => {
     const years = days / 365;
     return `${Math.floor(years)}년 전`;
   };
-
-  return <Grid height='auto'>{updateTime(recentUpdate)}</Grid>;
+  useEffect(() => {
+    updateTime();
+  }, [time]);
+  return <Grid height='auto'>{updateTime(time)}</Grid>;
 };
 
 export default Time;
