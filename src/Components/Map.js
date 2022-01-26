@@ -35,8 +35,7 @@ const Map = ({ markerData }) => {
   };
   useEffect(() => {
     mapScript();
-  }, []);
-
+  }, [markerData]);
   return (
     <Grid height='auto'>
       <Grid
@@ -58,4 +57,4 @@ const Map = ({ markerData }) => {
   );
 };
 
-export default Map;
+export default React.memo(Map);
