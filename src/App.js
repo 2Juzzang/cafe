@@ -11,7 +11,6 @@ const App = () => {
   let arr = [];
   useEffect(() => {
     bucket.get().then((docs) => {
-      // let markerData = [];
       docs.forEach((doc) => {
         // console.log(doc.data(), '데이터');
         // console.log(doc.id, '아이디');
@@ -22,7 +21,6 @@ const App = () => {
       });
     });
   }, []);
-  console.log(markerData);
   return (
     <div className='App'>
       <Header />
