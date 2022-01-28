@@ -24,15 +24,39 @@ const Login = () => {
             placeholder='비밀번호를 입력해주세요'
           />
         </Grid>
-        <Grid height='60px'>
+        <Grid
+          height='60px'
+          _onClick={() => {
+            console.log('로그인 하기');
+          }}
+        >
           <Button
             width='366px'
             height='56px'
             padding='0 6px'
             bg='black'
             color='white'
+            borderWidth='0px'
           >
             로그인 하기
+          </Button>
+        </Grid>
+        <Grid height='60px'>
+          <Button width='366px' height='56px' padding='0 6px' borderWidth='0px'>
+            <Grid
+              display='flex'
+              justifyContent='center'
+              alignItems='center'
+              _onClick={() => {
+                console.log('구글 로그인');
+              }}
+            >
+              <img
+                src={process.env.PUBLIC_URL + '/google.svg'}
+                style={{ width: '20px', margin: '0 5px 0 -20px' }}
+              />
+              구글 로그인
+            </Grid>
           </Button>
         </Grid>
       </Grid>
