@@ -1,7 +1,10 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid, Button } from '../elements/index';
-const Login = () => {
+const Login = ({ auth }) => {
+  const onLogin = (e) => {
+    auth.login(e.target.textContent).then(console.log); //🌟리턴되는 값 확인하기 위해
+  };
   const navigate = useNavigate();
   return (
     <Grid bg='white'>
@@ -47,9 +50,7 @@ const Login = () => {
               display='flex'
               justifyContent='center'
               alignItems='center'
-              _onClick={() => {
-                console.log('구글 로그인');
-              }}
+              _onClick={onLogin}
             >
               <img
                 src={process.env.PUBLIC_URL + '/google.svg'}

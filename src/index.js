@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Auth from './auth';
 import { BrowserRouter } from 'react-router-dom';
+
+const auth = new Auth();
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <App auth={auth} />
   </BrowserRouter>,
   document.getElementById('root'),
 );
