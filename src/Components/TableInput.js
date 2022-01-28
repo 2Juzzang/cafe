@@ -6,6 +6,7 @@ const TableInput = ({ markerData, name, empty, setEmpty, table }) => {
   const store = markerData.filter((store) => store.title === name)[0];
   const timeUpdate = () => {
     bucket.doc(store.title).update({ time: new Date().getTime() });
+    return (store.time = new Date().getTime());
   };
   const overInput = () => {
     if (empty > store.maximum) {

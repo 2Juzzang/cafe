@@ -52,6 +52,7 @@ const Map = ({ markerData }) => {
         setEmpty={setEmpty}
         table={table}
         time={time}
+        setTime={setTime}
       />
     </Grid>
   );

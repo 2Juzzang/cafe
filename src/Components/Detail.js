@@ -2,7 +2,15 @@ import React, { useEffect } from 'react';
 import Time from './Time';
 import TableInput from './TableInput';
 import { Grid } from '../elements';
-const Detail = ({ markerData, name, empty, setEmpty, table, time }) => {
+const Detail = ({
+  markerData,
+  name,
+  empty,
+  setEmpty,
+  table,
+  time,
+  setTime,
+}) => {
   useEffect(() => {
     setEmpty();
   }, [setEmpty]);
@@ -26,11 +34,13 @@ const Detail = ({ markerData, name, empty, setEmpty, table, time }) => {
           empty={empty}
           setEmpty={setEmpty}
           table={table}
+          time={time}
+          setTime={setTime}
         />
       )}
 
-      <p>갱신 시간</p>
-      <Time name={name} time={time} />
+      <p>최근 갱신 시간</p>
+      <Time name={name} time={time} setTime={setTime} />
     </Grid>
   );
 };
