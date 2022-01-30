@@ -2,8 +2,9 @@
   text-align: center;
   width: 414px;
   margin: 0 auto;
+  padding-bottom: 1px;
   background-color: wheat;
-  height: 100vh;
+  height: 100%;
 }
 
 .App-logo {
