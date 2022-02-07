@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Grid, Button } from '../elements/index';
 const Login = ({ auth }) => {
-  const onLogin = (e) => {
-    auth.login(e.target.textContent).then(console.log); //🌟리턴되는 값 확인하기 위해
-  };
   const navigate = useNavigate();
+  const onLogin = (e) => {
+    auth.login(e.target.textContent).then((data) => {
+      goToHome(data.user.uid);
+    }); //🌟리턴되는 값 확인하기 위해
+  };
+  const goToHome = (uid) => {
+    navigate({ pathname: '/', id: uid });
+  };
+  useEffect(() => {
+    auth.onAuthChange((user) => {
+      user && goToHome(user.uid);
+    });
+  });
   return (
     <Grid bg='white'>
       <Grid position='relative' top='15%' height='auto'>

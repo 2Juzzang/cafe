@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { Grid } from '../elements/index';
-const Header = () => {
+const Header = ({ onLogout }) => {
   const navigate = useNavigate();
   return (
     <Container>
@@ -19,6 +19,17 @@ const Header = () => {
           >
             사장님 로그인
           </p>
+          {onLogout ? (
+            <Grid
+              _onClick={() => {
+                onLogout();
+              }}
+            >
+              로그아웃
+            </Grid>
+          ) : (
+            console.log('없')
+          )}
         </Grid>
       </Grid>
     </Container>

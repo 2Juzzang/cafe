@@ -1,10 +1,19 @@
-import { firebaseAuth, googleProvider } from './firebase';
+import { firebaseApp, firebaseAuth, googleProvider } from './firebase';
 
 class Auth {
   login(name) {
     const provider = this.getProvider(name);
     return firebaseAuth.signInWithPopup(provider);
   }
+  logout() {
+    firebaseApp.auth().signOut();
+  }
+  onAuthChange = (callback) => {
+    firebaseApp.auth().onAuthStateChanged((uid) => {
+      callback(uid);
+    });
+  };
+
   getProvider(name) {
     switch (name) {
       case '구글 로그인':

@@ -4,6 +4,7 @@ import Detail from './Detail';
 import { Grid } from '../elements/index';
 
 const Map = ({ markerData }) => {
+  console.log(markerData, '마커데이터');
   const [name, setName] = useState('위치를 선택해주세요');
   const [table, setTable] = useState('');
   const [empty, setEmpty] = useState('');
@@ -16,15 +17,14 @@ const Map = ({ markerData }) => {
       level: 7, //지도의 레벨(확대, 축소 정도)
     };
     const map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-
     for (let i = 0; i < markerData.length; i++) {
+      console.log(markerData);
       const marker = new kakao.maps.Marker({
         map: map,
         position: new kakao.maps.LatLng(markerData[i].lat, markerData[i].long),
         title: markerData[i].title,
         maximum: markerData[i].maximum,
       });
-
       kakao.maps.event.addListener(marker, 'click', function () {
         setName(markerData[i].title);
         setTable(markerData[i].maximum);
