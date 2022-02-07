@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Button } from '../elements';
 import { firestore } from '../firebase';
-const TableInput = ({ markerData, name, empty, setEmpty, table }) => {
+const TableInput = ({ markerData, name, empty, setEmpty, table, setTime }) => {
   const bucket = firestore.collection('cafe');
   const store = markerData.filter((store) => store.title === name)[0];
   const timeUpdate = () => {
@@ -14,6 +14,8 @@ const TableInput = ({ markerData, name, empty, setEmpty, table }) => {
       return setEmpty(store.empty);
     }
     timeUpdate();
+    // 시간 방금 전 반영
+    setTime(store.time);
     bucket.doc(store.title).update({ empty: empty });
     return (store.empty = empty);
   };

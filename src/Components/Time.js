@@ -24,7 +24,6 @@ const Time = ({ time, setTime }) => {
   useEffect(() => {
     updateTime(time);
   }, [time]);
-  // console.log(time, '타타타탙임');
   return (
     <>
       <Grid height='auto'>{time}</Grid>
