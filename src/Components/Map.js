@@ -1,5 +1,5 @@
 /* global kakao */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Detail from './Detail';
 import { Grid } from '../elements/index';
 
@@ -10,7 +10,6 @@ const Map = ({ markerData }) => {
   const [empty, setEmpty] = useState('');
   const [time, setTime] = useState('위치를 선택해주세요');
   const mapScript = () => {
-    console.log('맵스크립트');
     let container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     let options = {
       //지도를 생성할 때 필요한 기본 옵션

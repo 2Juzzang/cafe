@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Grid } from '../elements';
 const Time = ({ time, setTime }) => {
-  console.log('타임');
   const updateTime = (time) => {
     if (typeof time == 'string') {
       return '위치를 선택해주세요';
