@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import Time from './Time';
 import TableInput from './TableInput';
 import { Grid } from '../elements';
