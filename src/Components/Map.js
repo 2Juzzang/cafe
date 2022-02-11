@@ -7,8 +7,9 @@ const Map = ({ markerData }) => {
   console.log(markerData, '마커데이터');
   const [name, setName] = useState('위치를 선택해주세요');
   const [table, setTable] = useState('');
-  const [empty, setEmpty] = useState('');
+  const [empty, setEmpty] = useState('위치를 선택해주세요');
   const [time, setTime] = useState('위치를 선택해주세요');
+  const [email, setEmail] = useState('');
   const mapScript = () => {
     let container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     let options = {
@@ -29,6 +30,7 @@ const Map = ({ markerData }) => {
         setTable(markerData[i].maximum);
         setEmpty(markerData[i].empty);
         setTime(markerData[i].time);
+        setEmail(markerData[i].email);
       });
     }
   };
@@ -50,6 +52,7 @@ const Map = ({ markerData }) => {
         empty={empty}
         setEmpty={setEmpty}
         table={table}
+        email={email}
         time={time}
         setTime={setTime}
       />

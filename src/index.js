@@ -9,7 +9,6 @@ import Auth from './auth';
 import { BrowserRouter } from 'react-router-dom';
 
 const auth = new Auth();
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

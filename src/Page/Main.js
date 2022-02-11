@@ -1,15 +1,18 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Map from '../Components/Map';
-import Test from '../Components/Test';
 import { firestore } from '../firebase';
+import { userActions } from '../redux/modules/user';
 const Main = ({ auth }) => {
+  const dispatch = useDispatch();
   // console.log(auth.onAuthChange((user) => {}));
   const navigate = useNavigate();
   const [markerData, setMarkerData] = useState([]);
   const onLogout = useCallback(() => {
     auth.logout();
+    dispatch(userActions.googleLogout());
   }, [auth]);
   const bucket = firestore.collection('cafe');
   let arr = [];
@@ -37,7 +40,6 @@ const Main = ({ auth }) => {
     <div>
       <Header onLogout={onLogout} />
       <Map markerData={markerData} />
-      <Test />
     </div>
   );
 };
