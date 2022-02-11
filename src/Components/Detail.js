@@ -2,15 +2,20 @@ import React, { useEffect } from 'react';
 import Time from './Time';
 import TableInput from './TableInput';
 import { Grid } from '../elements';
+import { useSelector } from 'react-redux';
 const Detail = ({
   markerData,
   name,
   empty,
   setEmpty,
   table,
+  email,
   time,
   setTime,
 }) => {
+  const owner = useSelector((state) => state.user.owner);
+  console.log(owner.userEmail === email);
+  console.log(email);
   useEffect(() => {
     setEmpty();
   }, [setEmpty]);
@@ -27,7 +32,7 @@ const Detail = ({
       <p>여유 좌석</p>
       {empty === undefined ? (
         '위치를 선택해주세요'
-      ) : (
+      ) : owner && owner.userEmail === email ? (
         <TableInput
           markerData={markerData}
           name={name}
@@ -37,6 +42,8 @@ const Detail = ({
           time={time}
           setTime={setTime}
         />
+      ) : (
+        <>{empty} 자리 남아있습니다</>
       )}
 
       <p>최근 갱신 시간</p>

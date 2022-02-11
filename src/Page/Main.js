@@ -2,7 +2,6 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Map from '../Components/Map';
-import Test from '../Components/Test';
 import { firestore } from '../firebase';
 const Main = ({ auth }) => {
   // console.log(auth.onAuthChange((user) => {}));
@@ -37,7 +36,6 @@ const Main = ({ auth }) => {
     <div>
       <Header onLogout={onLogout} />
       <Map markerData={markerData} />
-      <Test />
     </div>
   );
 };

@@ -4,7 +4,6 @@ import { applyActions } from '../redux/modules/test';
 const Test = () => {
   const dispatch = useDispatch();
   const test = useSelector((state) => state.test.number);
-  console.log('테스트', test);
 
   const increase = useCallback(
     () => dispatch(applyActions.increase()),
