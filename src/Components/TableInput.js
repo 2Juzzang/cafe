@@ -4,6 +4,7 @@ import { firestore } from '../firebase';
 const TableInput = ({ markerData, name, empty, setEmpty, table, setTime }) => {
   const bucket = firestore.collection('cafe');
   const store = markerData.filter((store) => store.title === name)[0];
+  console.log(store, '스토어');
   const timeUpdate = () => {
     bucket.doc(store.title).update({ time: new Date().getTime() });
     return (store.time = new Date().getTime());

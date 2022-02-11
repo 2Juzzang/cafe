@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './redux/configureStore';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -9,9 +11,11 @@ import { BrowserRouter } from 'react-router-dom';
 const auth = new Auth();
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App auth={auth} />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App auth={auth} />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root'),
 );
 
