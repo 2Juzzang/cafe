@@ -41,6 +41,8 @@ const Detail = ({
           time={time}
           setTime={setTime}
         />
+      ) : empty === 0 ? (
+        '현재 빈자리가 없습니다'
       ) : (
         <>{empty} 자리 남아있습니다</>
       )}
