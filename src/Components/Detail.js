@@ -15,6 +15,7 @@ const Detail = ({
 }) => {
   const owner = useSelector((state) => state.user.owner);
   console.log(owner.userEmail === email);
+  console.log(owner.userEmail);
   console.log(email);
   useEffect(() => {
     setEmpty();
