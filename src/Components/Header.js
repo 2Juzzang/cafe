@@ -8,16 +8,45 @@ const Header = ({ onLogout }) => {
   const navigate = useNavigate();
   return (
     <Container>
-      <Grid display='flex' justifyContent='space-between' bg='white'>
-        <Grid display='flex'>
-          <p>자리 있어요?</p>
+      <Grid
+        display='flex'
+        justifyContent='space-between'
+        alignItems='center'
+        bg='white'
+      >
+        <Grid
+          display='flex'
+          width='180px'
+          cursor='pointer'
+          _onClick={() => {
+            navigate('/');
+          }}
+        >
+          <p style={{ display: 'flex', alignItems: 'center' }}>자리 있어요</p>
+          <img
+            src={process.env.PUBLIC_URL + '/logo.svg'}
+            style={{
+              position: 'relative',
+              left: '-7px',
+              width: '40px',
+              cursor: 'pointer',
+            }}
+          />
         </Grid>
+        {/* <p
+          onClick={() => {
+            onLogout();
+            console.log(owner);
+          }}
+          style={{ cursor: 'pointer' }}
+        >
+          로그아웃
+        </p> */}
         <Grid display='flex' justifyContent='flex-end'>
           {owner.userEmail !== null ? (
             <p
               onClick={() => {
                 onLogout();
-                console.log(owner);
               }}
               style={{ cursor: 'pointer' }}
             >

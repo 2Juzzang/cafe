@@ -4,7 +4,6 @@ import Detail from './Detail';
 import { Grid } from '../elements/index';
 
 const Map = ({ markerData }) => {
-  console.log(markerData, '마커데이터');
   const [name, setName] = useState('위치를 선택해주세요');
   const [table, setTable] = useState('');
   const [empty, setEmpty] = useState('위치를 선택해주세요');

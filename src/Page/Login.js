@@ -3,14 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Grid, Button } from '../elements/index';
 import { userActions } from '../redux/modules/user';
+import { firebaseApp } from '../firebase';
 const Login = ({ auth }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onGoogleLogin = (e) => {
     auth.login(e.target.textContent).then((data) => {
-      console.log(data.user.displayName);
-      // 메일주소가 일치하면 권한 주기
-      console.log(data.user.email);
+      // console.log(firebaseApp.auth().currentUser.uid, '쿠키있니');
       dispatch(
         userActions.googleLogin({
           uid: data.user.uid,
@@ -22,22 +21,45 @@ const Login = ({ auth }) => {
     }); //🌟리턴되는 값 확인하기 위해
   };
   const goToHome = (uid, name, email) => {
-    console.log(uid, name, email);
     navigate({ pathname: '/', id: uid, name: name, email: email });
   };
   useEffect(() => {
     auth.onAuthChange((user) => {
-      user && goToHome(user.uid);
+      if (user) {
+        user && goToHome(user.uid);
+        try {
+          localStorage.setItem('user', JSON.stringify(user));
+        } catch (e) {
+          console.log('local storage is not working');
+        }
+      }
     });
-  });
+  }, [goToHome]);
   return (
     <Grid bg='white'>
       <Grid position='relative' top='15%' height='auto'>
         <p
-          style={{ margin: '20px 0', fontSize: '20px', cursor: 'pointer' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '180px',
+            margin: '20px auto',
+            fontSize: '20px',
+            cursor: 'pointer',
+          }}
           onClick={() => navigate('/')}
         >
-          자리 있어요?
+          자리 있어요
+          <img
+            src={process.env.PUBLIC_URL + '/logo.svg'}
+            style={{
+              position: 'relative',
+              left: '-7px',
+              width: '40px',
+              cursor: 'pointer',
+            }}
+          />
         </p>
         <Grid height='60px'>
           <input
@@ -74,6 +96,7 @@ const Login = ({ auth }) => {
               display='flex'
               justifyContent='center'
               alignItems='center'
+              cursor='pointer'
               _onClick={onGoogleLogin}
             >
               <img

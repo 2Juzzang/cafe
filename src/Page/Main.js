@@ -12,6 +12,7 @@ const Main = ({ auth }) => {
   const [markerData, setMarkerData] = useState([]);
   const onLogout = useCallback(() => {
     auth.logout();
+
     dispatch(userActions.googleLogout());
   }, [auth]);
   const bucket = firestore.collection('cafe');
@@ -30,14 +31,14 @@ const Main = ({ auth }) => {
     });
     auth.onAuthChange((user) => {
       !user && navigate('/');
-      user && console.log('유저가 있어요');
-      !user && console.log('유저가 없어요');
+      user && console.log('로그인 되어있어요');
+      !user && console.log('로그아웃 상태에요');
       // !user && navigate('/')
       user && navigate('/');
     });
   }, []);
   return (
-    <div>
+    <div style={{ paddingBottom: '1px' }}>
       <Header onLogout={onLogout} />
       <Map markerData={markerData} />
     </div>

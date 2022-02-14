@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Main from './Page/Main';
 import Login from './Page/Login';
-import Owner from './Page/Owner';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -11,7 +10,6 @@ const App = ({ auth }) => {
     <div className='App'>
       <Routes>
         <Route path='/login' exact element={<Login auth={auth} />} />
-        <Route path='/owner' exact element={<Owner auth={auth} />} />
         <Route path='/' exact element={<Main auth={auth} />} />
       </Routes>
     </div>

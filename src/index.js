@@ -7,8 +7,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Auth from './auth';
 import { BrowserRouter } from 'react-router-dom';
+import { userActions } from './redux/modules/user';
 
 const auth = new Auth();
+// 새로고침시 로그인 유지
+function loadUser() {
+  try {
+    const user = localStorage.getItem('user');
+    if (!user) return;
+
+    store.dispatch(userActions.loadUser(JSON.parse(user)));
+  } catch (e) {
+    console.log('실패');
+  }
+}
+loadUser();
+
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
