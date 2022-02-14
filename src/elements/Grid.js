@@ -202,7 +202,6 @@ const GridBox = styled.div`
   color: ${(props) => props.color};
   font-size: ${(props) => props.fontSize};
   backdrop-filter: ${(props) => props.backdropFilter};
-  font-family: 'NanumSquareR';
   ${(props) =>
     props.is_flex ? `display: flex;  justify-content: space-between;` : ''}
 
