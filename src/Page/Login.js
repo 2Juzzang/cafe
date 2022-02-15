@@ -9,6 +9,7 @@ const Login = ({ auth }) => {
   const navigate = useNavigate();
   const onGoogleLogin = (e) => {
     auth.login(e.target.textContent).then((data) => {
+      console.log('222');
       // console.log(firebaseApp.auth().currentUser.uid, '쿠키있니');
       dispatch(
         userActions.googleLogin({
@@ -25,17 +26,20 @@ const Login = ({ auth }) => {
   };
   useEffect(() => {
     auth.onAuthChange((user) => {
+      console.log('111');
       if (user) {
         user && goToHome(user.uid);
         try {
           // 로컬스토리지 저장, stringify 메서드를 통해 JSON 문자열로 변환
-          localStorage.setItem('user', JSON.stringify(user));
+          // localStorage.setItem('user', JSON.stringify(user));
+          // 세션스토리지
+          sessionStorage.setItem('user', JSON.stringify(user));
         } catch (e) {
           console.log('local storage is not working');
         }
       }
     });
-  }, [goToHome]);
+  }, [goToHome, auth]);
   return (
     <Grid bg='white'>
       <Grid position='relative' top='15%' height='auto'>

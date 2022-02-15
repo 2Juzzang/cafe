@@ -36,7 +36,7 @@ export default handleActions(
     [LOADUSER]: (state, action) =>
       produce(state, (draft) => {
         draft.owner.userUid = action.payload.uid;
-        draft.owner.userName = action.payload.name;
+        draft.owner.userName = action.payload.displayName;
         draft.owner.userEmail = action.payload.email;
       }),
   },

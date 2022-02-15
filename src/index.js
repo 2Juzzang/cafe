@@ -14,7 +14,8 @@ const auth = new Auth();
 const loadUser = () => {
   try {
     // localStorage 조회
-    const user = localStorage.getItem('user');
+    // const user = localStorage.getItem('user');
+    const user = sessionStorage.getItem('user');
     if (!user) return;
 
     // JSON.parse 메서드를 통해 JSON 문자열을 분석해 객체를 생성
@@ -23,12 +24,12 @@ const loadUser = () => {
     console.log('로그인 정보 불러오기 실패');
   }
 };
-
-// window.onbeforeunload = function () {
-//   localStorage.removeItem('user');
-//   return '';
-// };
+// 유저 정보 불러오기
 loadUser();
+// 브라우저가 종료될 때
+window.addEventListener('beforeunload', (event) => {
+  auth.authDelete();
+});
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

@@ -5,11 +5,13 @@ import styled from 'styled-components';
 import { Grid } from '../elements/index';
 const Header = ({ onLogout }) => {
   const owner = useSelector((state) => state.user.owner);
+  console.log(owner.userName);
   const navigate = useNavigate();
   return (
     <Container>
       <Grid
         display='flex'
+        height='50px'
         justifyContent='space-between'
         alignItems='center'
         bg='white'
@@ -18,11 +20,20 @@ const Header = ({ onLogout }) => {
           display='flex'
           width='180px'
           cursor='pointer'
+          // justifyContent='flex-end'
+          alignItems='center'
           _onClick={() => {
             navigate('/');
           }}
         >
-          <p style={{ display: 'flex', alignItems: 'center' }}>자리 있어요</p>
+          <p
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            자리 있어요
+          </p>
           <img
             src={process.env.PUBLIC_URL + '/logo.svg'}
             style={{
@@ -33,24 +44,25 @@ const Header = ({ onLogout }) => {
             }}
           />
         </Grid>
-        {/* <p
-          onClick={() => {
-            onLogout();
-            console.log(owner);
-          }}
-          style={{ cursor: 'pointer' }}
-        >
-          로그아웃
-        </p> */}
-        <Grid display='flex' justifyContent='flex-end'>
+        <Grid display='flex' justifyContent='flex-end' alignItems='center'>
           {owner.userEmail !== null ? (
-            <p
-              onClick={() => {
-                onLogout();
-              }}
-              style={{ cursor: 'pointer' }}
-            >
-              로그아웃
+            <p style={{ display: 'flex' }}>
+              <p>{owner.userName}님, 환영합니다! </p>
+
+              <p
+                onClick={() => {
+                  onLogout();
+                }}
+                style={{
+                  display: 'flex',
+                  alignItems: 'flex-end',
+                  marginLeft: '15px',
+                  cursor: 'pointer',
+                }}
+              >
+                {' '}
+                로그아웃
+              </p>
             </p>
           ) : (
             <p
@@ -71,6 +83,7 @@ const Header = ({ onLogout }) => {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: black;
 `;
 
