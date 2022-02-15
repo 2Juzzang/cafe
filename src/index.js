@@ -11,18 +11,24 @@ import { userActions } from './redux/modules/user';
 
 const auth = new Auth();
 // 새로고침시 로그인 유지
-function loadUser() {
+const loadUser = () => {
   try {
+    // localStorage 조회
     const user = localStorage.getItem('user');
     if (!user) return;
 
+    // JSON.parse 메서드를 통해 JSON 문자열을 분석해 객체를 생성
     store.dispatch(userActions.loadUser(JSON.parse(user)));
   } catch (e) {
-    console.log('실패');
+    console.log('로그인 정보 불러오기 실패');
   }
-}
-loadUser();
+};
 
+// window.onbeforeunload = function () {
+//   localStorage.removeItem('user');
+//   return '';
+// };
+loadUser();
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

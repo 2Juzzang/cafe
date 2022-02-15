@@ -30,6 +30,7 @@ const Main = ({ auth }) => {
       setMarkerData(arr);
     });
     auth.onAuthChange((user) => {
+      console.log(user);
       !user && navigate('/');
       user && console.log('로그인 되어있어요');
       !user && console.log('로그아웃 상태에요');

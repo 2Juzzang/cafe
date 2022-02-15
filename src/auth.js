@@ -7,7 +7,7 @@ class Auth {
   }
   logout() {
     firebaseApp.auth().signOut();
-    // 쿠키삭제
+    // 로컬스토리지 삭제
     localStorage.clear();
   }
   onAuthChange = (callback) => {

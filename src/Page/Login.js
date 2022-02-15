@@ -28,6 +28,7 @@ const Login = ({ auth }) => {
       if (user) {
         user && goToHome(user.uid);
         try {
+          // 로컬스토리지 저장, stringify 메서드를 통해 JSON 문자열로 변환
           localStorage.setItem('user', JSON.stringify(user));
         } catch (e) {
           console.log('local storage is not working');
