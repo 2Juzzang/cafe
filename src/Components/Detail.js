@@ -19,7 +19,7 @@ const Detail = ({
   }, [setEmpty]);
   return (
     <Grid
-      width='400px'
+      width='365px'
       height='250px'
       margin='7px auto'
       padding='7px 0'

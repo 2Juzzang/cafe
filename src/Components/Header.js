@@ -12,13 +12,14 @@ const Header = ({ onLogout }) => {
       <Grid
         display='flex'
         height='50px'
+        padding=' 0 5px'
         justifyContent='space-between'
         alignItems='center'
         bg='white'
       >
         <Grid
           display='flex'
-          width='180px'
+          width='200px'
           cursor='pointer'
           // justifyContent='flex-end'
           alignItems='center'
@@ -46,7 +47,7 @@ const Header = ({ onLogout }) => {
         </Grid>
         <Grid display='flex' justifyContent='flex-end' alignItems='center'>
           {owner.userEmail !== null ? (
-            <p style={{ display: 'flex' }}>
+            <p style={{ display: 'flex', fontSize: '14px' }}>
               <p>{owner.userName}님, 환영합니다! </p>
 
               <p

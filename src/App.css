@@ -7,17 +7,18 @@
 
 .App {
   text-align: center;
-  width: 414px;
+  width: 365px;
   margin: 0 auto;
   background-color: #0016A2;
-  height: 100%;
   font-family: 'GmarketSansMedium';
 }
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
-
+.Login :not(.App){
+  font-family: 'GmarketSansMedium';
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

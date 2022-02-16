@@ -39,8 +39,8 @@ const Map = ({ markerData }) => {
   return (
     <Grid height='auto'>
       <Grid
-        width='400px'
-        height='600px'
+        width='365px'
+        height='400px'
         margin='7px auto'
         bg='yellow'
         id='map'

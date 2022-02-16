@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import '../App.css';
 import { useDispatch } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Map from '../Components/Map';
 import { firestore } from '../firebase';
@@ -27,7 +28,6 @@ const Main = ({ auth }) => {
     });
 
     auth.onAuthChange((user) => {
-      console.log(user);
       !user && navigate('/');
       // user && console.log('로그인 되어있어요');
       // !user && console.log('로그아웃 상태에요');
