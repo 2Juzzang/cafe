@@ -9,6 +9,12 @@ const TableInput = ({ markerData, name, empty, setEmpty, table, setTime }) => {
     bucket.doc(store.title).update({ time: new Date().getTime() });
     return (store.time = new Date().getTime());
   };
+  const reg = (e) => {
+    if (isNaN(e)) {
+      alert('숫자만 입력해주세요');
+      return setEmpty('');
+    } else return setEmpty(e);
+  };
   const overInput = () => {
     if (empty > store.maximum) {
       alert('총 테이블 갯수를 초과했습니다');
@@ -32,7 +38,7 @@ const TableInput = ({ markerData, name, empty, setEmpty, table, setTime }) => {
       <input
         value={empty || ''}
         onChange={(e) => {
-          setEmpty(e.target.value);
+          reg(e.target.value);
         }}
         style={{
           width: '100px',
