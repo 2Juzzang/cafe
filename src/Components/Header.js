@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { Grid } from '../elements/index';
 const Header = ({ onLogout }) => {
   const owner = useSelector((state) => state.user.owner);
-  console.log(owner.userName);
   const navigate = useNavigate();
   return (
     <Container>

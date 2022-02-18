@@ -10,7 +10,6 @@ const Login = ({ auth }) => {
   const navigate = useNavigate();
   const onGoogleLogin = (e) => {
     auth.login(e.target.textContent).then((data) => {
-      console.log('222');
       // console.log(firebaseApp.auth().currentUser.uid, '쿠키있니');
       dispatch(
         userActions.googleLogin({
@@ -27,7 +26,6 @@ const Login = ({ auth }) => {
   };
   useEffect(() => {
     auth.onAuthChange((user) => {
-      console.log('111');
       if (user) {
         user && goToHome(user.uid);
         try {
